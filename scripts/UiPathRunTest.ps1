@@ -159,8 +159,9 @@ if($uipathCliFilePath -ne ""){
             Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
 			Expand-Archive -LiteralPath "$scriptPath/uipathcli/$cliVersion/cli.zip" -DestinationPath "$scriptPath/uipathcli/$cliVersion/";
             WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath/uipathcli/$cliVersion"
-			WriteLog "The ff are files in $scriptPath/uipathcli/$cliVersion/tools/"
-			ls -l $scriptPath/uipathcli/$cliVersion/tools/;
+			#WriteLog "The ff are files in $scriptPath/uipathcli/$cliVersion/tools/"
+			#ls -l $scriptPath/uipathcli/$cliVersion/tools/;
+            ls -l $uipathCLI;
             if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
                 WriteLog "Unable to locate uipath cli after it is downloaded."
                 exit 1
@@ -175,7 +176,6 @@ if($uipathCliFilePath -ne ""){
 }
 WriteLog "-----------------------------------------------------------------------------"
 WriteLog "uipcli location :   $uipathCLI"
-Get-acl $uipathCLI;
 #END Verifying UiPath CLI installation
 
 
