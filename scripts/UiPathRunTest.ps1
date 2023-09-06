@@ -160,7 +160,7 @@ if($uipathCliFilePath -ne ""){
 			Expand-Archive -LiteralPath "$scriptPath/uipathcli/$cliVersion/cli.zip" -DestinationPath "$scriptPath/uipathcli/$cliVersion/";
             WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath/uipathcli/$cliVersion"
 			WriteLog "The ff are files in $scriptPath/uipathcli/$cliVersion/tools/"
-			ls $scriptPath/uipathcli/$cliVersion/tools/;
+			ls -l $scriptPath/uipathcli/$cliVersion/tools/;
             if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
                 WriteLog "Unable to locate uipath cli after it is downloaded."
                 exit 1
@@ -175,6 +175,7 @@ if($uipathCliFilePath -ne ""){
 }
 WriteLog "-----------------------------------------------------------------------------"
 WriteLog "uipcli location :   $uipathCLI"
+Get-acl $uipathCLI;
 #END Verifying UiPath CLI installation
 
 
