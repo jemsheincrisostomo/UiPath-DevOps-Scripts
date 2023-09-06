@@ -146,7 +146,7 @@ if($uipathCliFilePath -ne ""){
     #Verifying UiPath CLI installation
     $cliVersion = "22.10.8438.32859"; #CLI Version (Script was tested on this latest version at the time)
 
-    $uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.dll"
+    $uipathCLI = "$scriptPath\uipathcli\$cliVersion\tools\uipcli.dll"
     if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
         WriteLog "UiPath CLI does not exist in this folder. Attempting to download it..."
         try {
@@ -156,11 +156,11 @@ if($uipathCliFilePath -ne ""){
             #Download UiPath CLI
             #Invoke-WebRequest "https://www.myget.org/F/uipath-dev/api/v2/package/UiPath.CLI/$cliVersion" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
             #Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
-            Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
-			Expand-Archive -LiteralPath "$scriptPath/uipathcli/$cliVersion/cli.zip" -DestinationPath "$scriptPath/uipathcli/$cliVersion";
-            WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath/uipathcli/$cliVersion"
-			WriteLog "The ff are files in $scriptPath/uipathcli/$cliVersion/tools/"
-			ls $scriptPath/uipathcli/$cliVersion/tools/;
+            Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI/versions/$cliVersion/content" -OutFile "$scriptPath\uipathcli\$cliVersion\cli.zip";
+			Expand-Archive -LiteralPath "$scriptPath\uipathcli\$cliVersion\cli.zip" -DestinationPath "$scriptPath\uipathcli\$cliVersion";
+            WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath\uipathcli\$cliVersion"
+			WriteLog "The ff are files in $scriptPath\uipathcli\$cliVersion\tools\"
+			ls $scriptPath\uipathcli\$cliVersion\tools\;
             if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
                 WriteLog "Unable to locate uipath cli after it is downloaded."
                 exit 1
