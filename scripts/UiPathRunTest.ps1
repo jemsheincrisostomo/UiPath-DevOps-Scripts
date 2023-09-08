@@ -178,7 +178,7 @@ if($uipathCliFilePath -ne ""){
 WriteLog "-----------------------------------------------------------------------------"
 WriteLog "uipcli location :   $uipathCLI"
 WriteLog "updating permission of uipath CLI"
-chmod +x /builds/aws-rpa/uibank-loan-rpa/scripts/uipathcli/22.10.8438.32859/tools/uipcli.dll;
+chmod +x $uipathCLI;
 #END Verifying UiPath CLI installation
 
 
@@ -316,9 +316,9 @@ if($secretIndex -ge 0){
 WriteLog "Executing $uipathCLI $ParamMask"
 
 #call uipath cli 
-#& "$uipathCLI" $ParamList.ToArray();
+& "$uipathCLI" $ParamList.ToArray();
 #Invoke-Expression "& `"$uipathCLI`" $ParamList.ToArray()";
-[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList")
+#[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList.ToArray()")
 
 if($LASTEXITCODE -eq 0)
 {
