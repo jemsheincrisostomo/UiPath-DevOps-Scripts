@@ -190,7 +190,7 @@ if($orchestrator_url -eq "" -or $orchestrator_tenant -eq "")
     exit 1
 }
 
-#required parameters (Authintication)
+#required parameters (Authentication)
 if($accountForApp -eq "" -or $applicationId -eq "" -or $applicationSecret -eq "" -or $applicationScope -eq "")
 {
     if($account_name -eq "" -or $userKey -eq "")
@@ -318,7 +318,7 @@ WriteLog "Executing $uipathCLI $ParamMask"
 #call uipath cli 
 #& "$uipathCLI" $ParamList.ToArray();
 #Invoke-Expression "& `"$uipathCLI`" $ParamList.ToArray()";
-[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList.ToArray()")
+[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList")
 
 if($LASTEXITCODE -eq 0)
 {
