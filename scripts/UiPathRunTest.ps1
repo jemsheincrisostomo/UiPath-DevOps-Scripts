@@ -317,9 +317,6 @@ WriteLog "Executing $uipathCLI $ParamMask"
 
 #call uipath cli 
 Start-Process -NoNewWindow -FilePath "$uipathCLI" -ArgumentList "$ParamList.ToArray"
-#& $uipathCLI $ParamList.ToArray()
-#Invoke-Expression "& `"$uipathCLI`" $ParamList.ToArray()";
-#[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList.ToArray()")
 
 if($LASTEXITCODE -eq 0)
 {
