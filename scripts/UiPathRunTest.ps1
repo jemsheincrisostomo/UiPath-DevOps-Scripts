@@ -144,7 +144,8 @@ if($uipathCliFilePath -ne ""){
     }
 }else{
     #Verifying UiPath CLI installation
-    $cliVersion = "22.10.8438.32859"; #CLI Version (Script was tested on this latest version at the time)
+    #$cliVersion = "22.10.8438.32859"; #CLI Version (Script was tested on this latest version at the time)
+    $cliVersion = "23.6.8581.19168";
 
     $uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.dll"
     if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
@@ -316,7 +317,10 @@ if($secretIndex -ge 0){
 WriteLog "Executing $uipathCLI $ParamMask"
 
 #call uipath cli 
-Start-Process -NoNewWindow -FilePath "$uipathCLI" -ArgumentList "$ParamList.ToArray"
+& "$uipathCLI" $ParamList.ToArray()
+#Invoke-Expression "& `"$uipathCLI`" $ParamList.ToArray()";
+#[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList.ToArray()")
+#Start-Process -NoNewWindow -FilePath "$uipathCLI" -ArgumentList "$ParamList.ToArray"
 
 if($LASTEXITCODE -eq 0)
 {
