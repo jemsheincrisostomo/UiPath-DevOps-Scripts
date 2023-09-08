@@ -149,6 +149,7 @@ if($uipathCliFilePath -ne ""){
 
     $uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.dll"
     if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
+        WriteLog "SplitPath in $scriptPath"
         WriteLog "UiPath CLI does not exist in this folder. Attempting to download it..."
         try {
             if (-not(Test-Path -Path "$scriptPath/uipathcli/$cliVersion" -PathType Leaf)){
