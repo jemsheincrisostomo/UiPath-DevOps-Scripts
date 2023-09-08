@@ -318,7 +318,7 @@ if($secretIndex -ge 0){
 WriteLog "Executing $uipathCLI $ParamMask"
 
 #call uipath cli 
-& "$uipathCLI" $ParamList.ToArray()
+& "$uipathCLI" "$ParamList.ToArray()"
 #Invoke-Expression "& `"$uipathCLI`" $ParamList.ToArray()";
 #[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList.ToArray()")
 #Start-Process -NoNewWindow -FilePath "$uipathCLI" -ArgumentList "$ParamList.ToArray"
