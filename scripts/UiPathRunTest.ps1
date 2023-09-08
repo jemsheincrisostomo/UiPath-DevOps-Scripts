@@ -181,7 +181,6 @@ WriteLog "----------------------------------------------------------------------
 WriteLog "uipcli location :   $uipathCLI"
 WriteLog "updating permission of uipath CLI"
 chmod +x $uipathCLI;
-file $uipathCLI;
 #END Verifying UiPath CLI installation
 
 
@@ -323,6 +322,7 @@ WriteLog "Executing $uipathCLI $ParamMask"
 #Invoke-Expression "& `"$uipathCLI`" $ParamList.ToArray()";
 #[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList.ToArray()")
 #Start-Process -NoNewWindow -FilePath "$uipathCLI" -ArgumentList "$ParamList.ToArray"
+Start-Process -NoNewWindow -FilePath "$uipathCLI" -ArgumentList "test run https://cloud.uipath.com/awsppxkjbp/AWSDefault AWSDefault --testset UiBankLoanRegressTest --accountName awsppxkjbp --token ifOakMB6a80XKTnN3wdAQAu90DE00J8WZnS6AlB6a8bB3* --organizationUnit Sample"
 
 if($LASTEXITCODE -eq 0)
 {
