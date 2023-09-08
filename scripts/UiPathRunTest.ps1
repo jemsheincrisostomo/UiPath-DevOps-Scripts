@@ -314,7 +314,8 @@ if($secretIndex -ge 0){
 WriteLog "Executing $uipathCLI $ParamMask"
 
 #call uipath cli 
-& ."$uipathCLI" $ParamList.ToArray();
+#& "$uipathCLI" $ParamList.ToArray();
+Invoke-Expression "& `"$uipathCLI"` $ParamList.ToArray()";
 
 if($LASTEXITCODE -eq 0)
 {
