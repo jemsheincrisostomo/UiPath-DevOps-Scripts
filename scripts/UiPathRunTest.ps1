@@ -132,7 +132,6 @@ function WriteLog
 }
 #Running Path
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
-WriteLog "SplitPath in $scriptPath"
 #log file
 $debugLog = "$scriptPath\orchestrator-test-run.log"
 
