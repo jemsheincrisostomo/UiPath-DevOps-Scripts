@@ -148,33 +148,34 @@ if($uipathCliFilePath -ne ""){
     #$cliVersion = "23.6.8581.19168";
 
     #$uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.dll"
-    #$uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.exe"
+    $uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.exe"
 
     #orig
-    $uipathCLI = "$scriptPath\uipathcli\$cliVersion\tools\uipcli.exe"
+    #$uipathCLI = "$scriptPath\uipathcli\$cliVersion\tools\uipcli.exe"
     if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
         WriteLog "SplitPath in $scriptPath"
         WriteLog "UiPath CLI does not exist in this folder. Attempting to download it..."
         try {
-            #if (-not(Test-Path -Path "$scriptPath/uipathcli/$cliVersion" -PathType Leaf)){
-            #    New-Item -Path "$scriptPath/uipathcli/$cliVersion" -ItemType "directory" -Force | Out-Null
-            #}
+            if (-not(Test-Path -Path "$scriptPath/uipathcli/$cliVersion" -PathType Leaf)){
+                New-Item -Path "$scriptPath/uipathcli/$cliVersion" -ItemType "directory" -Force | Out-Null
+            }
 
             #orig
-            if (-not(Test-Path -Path "$scriptPath\uipathcli\$cliVersion" -PathType Leaf)){ 
-                New-Item -Path "$scriptPath\uipathcli\$cliVersion" -ItemType "directory" -Force | Out-Null
-            }
+            #if (-not(Test-Path -Path "$scriptPath\uipathcli\$cliVersion" -PathType Leaf)){ 
+            #    New-Item -Path "$scriptPath\uipathcli\$cliVersion" -ItemType "directory" -Force | Out-Null
+            #}
+
             #Download UiPath CLI
             #Invoke-WebRequest "https://www.myget.org/F/uipath-dev/api/v2/package/UiPath.CLI/$cliVersion" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
-            Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/$cliVersion/content" -OutFile "$scriptPath\\uipathcli\\$cliVersion\\cli.zip";
-            Expand-Archive -LiteralPath "$scriptPath\\uipathcli\\$cliVersion\\cli.zip" -DestinationPath "$scriptPath\\uipathcli\\$cliVersion";
-            WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath\uipathcli\\$cliVersion"
+            #Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/$cliVersion/content" -OutFile "$scriptPath\\uipathcli\\$cliVersion\\cli.zip";
+            #Expand-Archive -LiteralPath "$scriptPath\\uipathcli\\$cliVersion\\cli.zip" -DestinationPath "$scriptPath\\uipathcli\\$cliVersion";
+            #WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath\uipathcli\\$cliVersion"
             
             #custom
-            #Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
+            Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
             #Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
-			#Expand-Archive -LiteralPath "$scriptPath/uipathcli/$cliVersion/cli.zip" -DestinationPath "$scriptPath/uipathcli/$cliVersion/";
-            #WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath/uipathcli/$cliVersion"
+			Expand-Archive -LiteralPath "$scriptPath/uipathcli/$cliVersion/cli.zip" -DestinationPath "$scriptPath/uipathcli/$cliVersion/";
+            WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath/uipathcli/$cliVersion"
 			#WriteLog "The ff are files in $scriptPath/uipathcli/$cliVersion/tools/"
 			#ls -l $scriptPath/uipathcli/$cliVersion/tools/;
             ls -l $uipathCLI;
