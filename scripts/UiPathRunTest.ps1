@@ -147,8 +147,8 @@ if($uipathCliFilePath -ne ""){
     $cliVersion = "22.10.8438.32859"; #CLI Version (Script was tested on this latest version at the time)
     #$cliVersion = "23.6.8581.19168";
 
-    #$uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.dll"
-    $uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.exe"
+    $uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.dll"
+    #$uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.exe"
 
     #orig
     #$uipathCLI = "$scriptPath\uipathcli\$cliVersion\tools\uipcli.exe"
@@ -172,8 +172,8 @@ if($uipathCliFilePath -ne ""){
             #WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath\uipathcli\\$cliVersion"
             
             #custom
-            Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
-            #Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
+            #Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
+            Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI/versions/$cliVersion/content" -OutFile "$scriptPath/uipathcli/$cliVersion/cli.zip";
 			Expand-Archive -LiteralPath "$scriptPath/uipathcli/$cliVersion/cli.zip" -DestinationPath "$scriptPath/uipathcli/$cliVersion/";
             WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath/uipathcli/$cliVersion"
 			#WriteLog "The ff are files in $scriptPath/uipathcli/$cliVersion/tools/"
