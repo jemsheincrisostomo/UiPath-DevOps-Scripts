@@ -149,7 +149,9 @@ if($uipathCliFilePath -ne ""){
 
     #$uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.dll"
     #$uipathCLI = "$scriptPath/uipathcli/$cliVersion/tools/uipcli.exe"
-    $uipathCLI = "$scriptPath\uipathcli\$cliVersion\tools\uipcli.exe" #orig
+
+    #orig
+    $uipathCLI = "$scriptPath\uipathcli\$cliVersion\tools\uipcli.exe"
     if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
         WriteLog "SplitPath in $scriptPath"
         WriteLog "UiPath CLI does not exist in this folder. Attempting to download it..."
@@ -157,7 +159,9 @@ if($uipathCliFilePath -ne ""){
             #if (-not(Test-Path -Path "$scriptPath/uipathcli/$cliVersion" -PathType Leaf)){
             #    New-Item -Path "$scriptPath/uipathcli/$cliVersion" -ItemType "directory" -Force | Out-Null
             #}
-            if (-not(Test-Path -Path "$scriptPath\uipathcli\$cliVersion" -PathType Leaf)){ #orig
+
+            #orig
+            if (-not(Test-Path -Path "$scriptPath\uipathcli\$cliVersion" -PathType Leaf)){ 
                 New-Item -Path "$scriptPath\uipathcli\$cliVersion" -ItemType "directory" -Force | Out-Null
             }
             #Download UiPath CLI
@@ -327,7 +331,8 @@ if($secretIndex -ge 0){
 WriteLog "Executing $uipathCLI $ParamMask"
 
 #call uipath cli 
-& "$uipathCLI" $ParamList.ToArray() #orig
+& "$uipathCLI" $ParamList.ToArray()
+
 #Invoke-Expression "& `"$uipathCLI`" $ParamList.ToArray()";
 #[System.Diagnostics.Process]::Start("$uipathCLI", "$ParamList.ToArray()")
 #Start-Process -NoNewWindow -FilePath "$uipathCLI" -ArgumentList "$ParamList.ToArray"
